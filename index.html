@@ -1,64 +1,88 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <title>Smart Expense Tracker</title>
-     <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="left">
-            <div class="logo"></div>  
-                <h1>Smart Expense Tracker</h1>
 
-                <p>
-                    Track your expense, manage your budget and achive your 
-                    financial goals.
-                </p>
-                <div class="features">
-                    <p>✓Track Expense</p>
-                    <p>✓Analyze Spending</p>
-                    <p>✓Manage Budget</p>
-                </div>
-            </div>
-            <div class="right">
-                <h2>Welcome Back!</h2>
-                <p>Login to continue to your account</p>
-                <form id="loginForm">
+    <nav class="navbar">
+        <div class="logo">SMART EXPENSE TRACKER</div>
 
-                    <label>Email Address</label>
-                    <input type="email"
-                           id="email"
-                           placeholder="Enter your email"
-                           required>
-
-                    <lebel>Password</lebel>
-                    <div class="password-box">
-                    <input type="password"
-                           id="password"
-                           placeholder="Enter your password"
-                           required>
-                           <button type="button"
-                           onclick="showPassword()">👁</button>
-                           </div>
-
-                           <a href="#"
-                              onclick="forgotPassword()">
-                              Forgot Password?
-                            </a>
-
-                            <button type="submit">
-                                SIGN IN
-                            </button>
-                </form>
-
-                <p>
-                    Don't have an account?
-                    <a href="#"
-                       onclick="signUp()">Sign Up</a>
-                </p>
-            </div>
+        <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#expenses">Expenses</a>
+            <a href="#reports">Reports</a>
         </div>
+    </nav>
 
-        <script scr="script.js"></script>
+    <main class="container" id="dashboard">
+
+        <header class="welcome">
+            <h1>Welcome, <span>User</span>!</h1>
+            <p>Manage your money smarter, every day.</p>
+        </header>
+
+        <section class="summary">
+
+            <div class="card income">
+                <p>Total Income</p>
+                <h2 id="totalIncome"></h2>
+            </div>
+
+            <div class="card expense">
+                <p>Today's Expense</p>
+                <h2 id="todayExpense"></h2>
+            </div>
+
+            <div class="card balance">
+                <p>Remaining Balance</p>
+                <h2 id="remainingBalance"></h2>
+            </div>
+
+        </section>
+
+        <section class="chart-section" id="reports">
+            <h2>Expense Analysis</h2>
+
+            <div class="chart-box">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
+
+        <section class="transactions" id="expenses">
+            <h2>Recent Transactions</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionList"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <button class="add-button" id="addExpenseBtn"
+        aria-label="Add expense">+</button>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
+```

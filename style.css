@@ -1,114 +1,239 @@
-body {
-    font-family: Arial;
-    background-color: #f2f5fa;
+```css
+* {
     margin: 0;
-    padding: 30px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    width: 850px;
-    margin: 30px auto;
-    display: flex;
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-
-/* Left Side */
-
-.left {
-    width: 50%;
-    background-color: #4f7df3;
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
     color: white;
-    padding: 50px;
+
+    background-color: #031126;
+    background-image:
+        linear-gradient(
+            rgba(1, 10, 28, 0.35),
+            rgba(1, 10, 28, 0.55)
+        ),
+        url("./finance-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    padding: 22px 6%;
+    background: rgba(2, 15, 38, 0.75);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    backdrop-filter: blur(12px);
 }
 
 .logo {
-    font-size: 40px;
-    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00e5ff;
 }
 
-.left h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
+.nav-links {
+    display: flex;
+    gap: 28px;
 }
 
-.left p {
-    line-height: 1.6;
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-
-/* Right Side */
-
-.right {
-    width: 50%;
-    padding: 50px;
+.nav-links a:hover {
+    color: #00e5ff;
 }
 
-.right h2 {
-    font-size: 30px;
-    margin-top: 0;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.welcome {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.welcome h1 {
+    font-size: 32px;
     margin-bottom: 10px;
 }
 
-.right label {
-    display: block;
-    margin-top: 20px;
+.welcome span {
+    color: #00e5ff;
 }
 
-.right input {
-    width: 100%;
-    padding: 12px;
+.welcome p {
+    color: #d0e2f5;
     margin-top: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 7px;
 }
 
-.right a {
-    display: block;
-    margin-top: 15px;
-    color: #4f7df3;
-    text-decoration: none;
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 25px;
-    background-color: #4f7df3;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
+.card {
+    padding: 25px;
+    border-radius: 15px;
+
+    background: rgba(4, 23, 52, 0.78);
+    border: 1px solid rgba(0, 229, 255, 0.5);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+
+    transition: transform 0.3s;
 }
 
-button:hover {
-    background-color: #315fcf;
-} 
+.card:hover {
+    transform: translateY(-5px);
+}
 
-.password-box {
+.card p {
+    color: #d0e2f5;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 27px;
+    overflow-wrap: anywhere;
+}
+
+.income h2 {
+    color: #00e5ff;
+}
+
+.expense h2 {
+    color: #ffbf47;
+}
+
+.balance h2 {
+    color: #50f0a0;
+}
+
+.chart-section,
+.transactions {
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+
+    background: rgba(3, 17, 40, 0.82);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+
+    backdrop-filter: blur(10px);
+}
+
+.chart-section h2,
+.transactions h2 {
+    margin-bottom: 22px;
+    color: #00e5ff;
+}
+
+.chart-box {
+    height: 300px;
     position: relative;
 }
 
-.password-box input {
-    padding-right: 40px;
+.table-wrapper {
+    overflow-x: auto;
 }
 
-.password-box button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-    width: 35px !important;
-    margin: 0 !important;
-    padding: 0 !important;
+th,
+td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
 
-    background: transparent !important;
-    color: #555;
+th {
+    color: #ffca58;
+}
 
+td {
+    color: #e4efff;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    width: 58px;
+    height: 58px;
     border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #00e5ff, #00a6c7);
+    color: #001329;
+
+    font-size: 32px;
     cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    transition: transform 0.3s;
 }
+
+.add-button:hover {
+    transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .chart-box {
+        height: 250px;
+    }
+}
+```
